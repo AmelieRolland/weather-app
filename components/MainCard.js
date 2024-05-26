@@ -8,32 +8,30 @@ export const MainCard = ({
   description,
   iconName,
   unitSystem,
-  weatherData,
+  data,
 }) => {
+
+
   return (
+    
     <div className={styles.wrapper}>
       <h1 className={styles.location}>
-        {city}, {country}
+        {city}
       </h1>
       <p className={styles.description}>{description}</p>
       <Image
+      
         width="300px"
         height="300px"
         src={`/icons/${iconName}.svg`}
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>
-        {unitSystem == "metric"
-          ? Math.round(weatherData.main.temp)
-          : Math.round(ctoF(weatherData.main.temp))}
-        °{unitSystem == "metric" ? "C" : "F"}
+      { data.current.temperature_2m}
       </h1>
       <p>
-        Feels like{" "}
-        {unitSystem == "metric"
-          ? Math.round(weatherData.main.feels_like)
-          : Math.round(ctoF(weatherData.main.feels_like))}
-        °{unitSystem == "metric" ? "C" : "F"}
+        Feels like { data.current.temperature_2m}
+ 
       </p>
     </div>
   );

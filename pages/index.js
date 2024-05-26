@@ -1,80 +1,77 @@
 import { useState, useEffect } from "react";
+import { setIconName } from "../services/getIconName";
+
+
 
 import { MainCard } from "../components/MainCard";
 import { ContentBox } from "../components/ContentBox";
 import { Header } from "../components/Header";
 import { DateAndTime } from "../components/DateAndTime";
-import { Search } from "../components/Search";
 import { MetricsBox } from "../components/MetricsBox";
-import { UnitSwitch } from "../components/UnitSwitch";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ErrorScreen } from "../components/ErrorScreen";
 
 import styles from "../styles/Home.module.css";
+import config from "./api/config";
+
 
 export const App = () => {
-  const [cityInput, setCityInput] = useState("Riga");
-  const [triggerFetch, setTriggerFetch] = useState(true);
-  const [weatherData, setWeatherData] = useState();
+  const [triggerFetch, setTriggerFetch] = useState();
+  const [data, setWeatherData] = useState();
   const [unitSystem, setUnitSystem] = useState("metric");
+  const {city} = config
+  
+
+      useEffect(() => {
+        const getData = async () => {
+        const res = await fetch("api/data");
+        const data = await res.json();
+        setWeatherData({ ...data });
+        console.log(data.daily.sunrise);
+        console.log(data.current.weather_code);
+
+      };
+      getData();
+    }, [triggerFetch]);
+
+
+
+
+
+
+
+  const [iconName, setIconNameState] = useState();
 
   useEffect(() => {
-    const getData = async () => {
-      const res = await fetch("api/data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cityInput }),
-      });
-      const data = await res.json();
-      setWeatherData({ ...data });
-      setCityInput("");
-    };
-    getData();
-  }, [triggerFetch]);
+    if (data) {
+      const iconName = setIconName(data);
+      setIconNameState(iconName);
+    }
+  }, [data]);
+  
 
-  const changeSystem = () =>
-    unitSystem == "metric"
-      ? setUnitSystem("imperial")
-      : setUnitSystem("metric");
 
-  return weatherData && !weatherData.message ? (
+  return data && !data.message ? (
     <div className={styles.wrapper}>
       <MainCard
-        city={weatherData.name}
-        country={weatherData.sys.country}
-        description={weatherData.weather[0].description}
-        iconName={weatherData.weather[0].icon}
-        unitSystem={unitSystem}
-        weatherData={weatherData}
+        city={city}
+        country={data.timezone}
+        description={data.temperature_2m}
+        iconName={iconName}
+        data={data}
       />
       <ContentBox>
         <Header>
-          <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
-          <Search
-            placeHolder="Search a city..."
-            value={cityInput}
-            onFocus={(e) => {
-              e.target.value = "";
-              e.target.placeholder = "";
-            }}
-            onChange={(e) => setCityInput(e.target.value)}
-            onKeyDown={(e) => {
-              e.keyCode === 13 && setTriggerFetch(!triggerFetch);
-              e.target.placeholder = "Search a city...";
-            }}
-          />
+          
+          <DateAndTime data={data}  />
+          
         </Header>
-        <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
-        <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} />
+        {<MetricsBox data={data} />}
+        {/* <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} /> */}
       </ContentBox>
     </div>
-  ) : weatherData && weatherData.message ? (
+  ) : data && data.message ? (
     <ErrorScreen errorMessage="City not found, try again!">
-      <Search
-        onFocus={(e) => (e.target.value = "")}
-        onChange={(e) => setCityInput(e.target.value)}
-        onKeyDown={(e) => e.keyCode === 13 && setTriggerFetch(!triggerFetch)}
-      />
     </ErrorScreen>
   ) : (
     <LoadingScreen loadingMessage="Loading data..." />
