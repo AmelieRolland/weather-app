@@ -29,6 +29,8 @@ They asked me to change the api they were using (weathermeteo) and use openmeteo
 
 There is a big JS community on internet so I could find most solutions to my problematics, therefore, I couldn't install node-cron, maybe because of the node version. I even tried an other one, 'cron', but it wasn't successfull either.
 
+I added a file, in Services, where I made a function to change the main image acording to the weather code.
+
 Also, since I trained myself, maybe I used some methods, or functions that are not the most optimized; I'm sure I will learn more soon and change it when needed.
 
 
