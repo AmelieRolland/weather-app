@@ -25,6 +25,8 @@ Check the current weather on any city on the planet. Switch between metric and i
 
 This is a project-test for a school I would really love to integrate. This was very challenging since I made it before my JS class, so basically I had to learn a lot of things by myself.
 
+They asked me to change the api they were using (weathermeteo) and use openmeteo, with some new requests. This is the first time I worked with existing code, it was very interesting.
+
 There is a big JS community on internet so I could find most solutions to my problematics, therefore, I couldn't install node-cron, maybe because of the node version. I even tried an other one, 'cron', but it wasn't successfull either.
 
 Also, since I trained myself, maybe I used some methods, or functions that are not the most optimized; I'm sure I will learn more soon and change it when needed.
