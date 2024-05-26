@@ -13,10 +13,16 @@ export const getVisibility = (unitSystem, visibilityInMeters) =>
     ? (visibilityInMeters / 1000).toFixed(1)
     : kmToMiles(visibilityInMeters / 1000);
 
-export const getTime = (unitSystem, currentTime, timezone) =>
-  unitSystem == "metric"
-    ? unixToLocalTime(currentTime, timezone)
-    : timeTo12HourFormat(unixToLocalTime(currentTime, timezone));
+export const getTime = (unitSystem) => {
+  const currentTime = new Date();
+  const hours = currentTime.getHours();
+  const minutes = currentTime.getMinutes();
+  const seconds = currentTime.getSeconds();
+  const formattedHours = hours % 12 || 12;
+  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+  const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+};
 
 export const getAMPM = (unitSystem, currentTime, timezone) =>
   unitSystem === "imperial"
@@ -24,8 +30,12 @@ export const getAMPM = (unitSystem, currentTime, timezone) =>
       ? "PM"
       : "AM"
     : "";
+export const getFixedTime = (unitSystem, currentTime, timezone) =>
+unitSystem == "metric"
+  ? unixToLocalTime(currentTime, timezone)
+  : timeTo12HourFormat(unixToLocalTime(currentTime, timezone));
 
-export const getWeekDay = (weatherData) => {
+export const getWeekDay = (data) => {
   const weekday = [
     "Sunday",
     "Monday",
@@ -36,6 +46,8 @@ export const getWeekDay = (weatherData) => {
     "Saturday",
   ];
   return weekday[
-    new Date((weatherData.dt + weatherData.timezone) * 1000).getUTCDay()
+    new Date((data.current.time + data.utc_offset_seconds) * 1000).getUTCDay()
   ];
+
+  
 };
