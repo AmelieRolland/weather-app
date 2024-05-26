@@ -35,11 +35,6 @@ export const App = () => {
     }, [triggerFetch]);
 
 
-
-
-
-
-
   const [iconName, setIconNameState] = useState();
 
   useEffect(() => {
@@ -67,7 +62,6 @@ export const App = () => {
           
         </Header>
         {<MetricsBox data={data} />}
-        {/* <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} /> */}
       </ContentBox>
     </div>
   ) : data && data.message ? (

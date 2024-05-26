@@ -1,13 +1,10 @@
 import Image from "next/image";
-import { ctoF } from "../services/converters";
 import styles from "./MainCard.module.css";
 
 export const MainCard = ({
   city,
-  country,
   description,
   iconName,
-  unitSystem,
   data,
 }) => {
 
@@ -27,10 +24,10 @@ export const MainCard = ({
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>
-      { data.current.temperature_2m}
+      { data.current.temperature_2m} C°
       </h1>
       <p>
-        Feels like { data.current.temperature_2m}
+        Feels like { data.current.temperature_2m} C°
  
       </p>
     </div>

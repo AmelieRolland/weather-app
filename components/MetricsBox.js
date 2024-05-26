@@ -4,7 +4,6 @@ import {
   getAMPM,
   getVisibility,
   getWindSpeed,
-  getFixedTime
 } from "../services/helpers";
 import { MetricsCard } from "./MetricsCard";
 import styles from "./MetricsBox.module.css";

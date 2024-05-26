@@ -19,6 +19,8 @@ Check the current weather on any city on the planet. Switch between metric and i
 
 7. Possibility to set the city from a config file
 
+8. Clock integrated
+
 ## THE PROJECT
 
 This is a project-test for a school I would really love to integrate. This was very challenging since I made it before my JS class, so basically I had to learn a lot of things by myself.
