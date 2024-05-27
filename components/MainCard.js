@@ -8,6 +8,8 @@ export const MainCard = ({
   data,
 }) => {
 
+  let celsius = Math.floor(data.current.temperature_2m);
+
 
   return (
     
@@ -24,12 +26,8 @@ export const MainCard = ({
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>
-      { data.current.temperature_2m} C°
+      { celsius} C°
       </h1>
-      <p>
-        Feels like { data.current.temperature_2m} C°
- 
-      </p>
     </div>
   );
 };
