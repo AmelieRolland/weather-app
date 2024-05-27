@@ -18,10 +18,10 @@ export const getTime = (unitSystem) => {
   const hours = currentTime.getHours();
   const minutes = currentTime.getMinutes();
   const seconds = currentTime.getSeconds();
-  const formattedHours = hours % 24 || 24;
+  const formattedHours = hours % 12 || 12;
   const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
   const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
-  return `${formattedHours}h${formattedMinutes}:${formattedSeconds}`;
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 };
 
 export const getAMPM = (unitSystem, currentTime, timezone) =>
@@ -30,7 +30,7 @@ export const getAMPM = (unitSystem, currentTime, timezone) =>
       ? "PM"
       : "AM"
     : "";
-    
+
 export const getFixedTime = (unitSystem, currentTime, timezone) =>
 unitSystem == "metric"
   ? unixToLocalTime(currentTime, timezone)

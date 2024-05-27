@@ -27,7 +27,7 @@ export const App = () => {
         const res = await fetch("api/data");
         const data = await res.json();
         setWeatherData({ ...data });
-        console.log((data.daily.sunrise+ data.utc_offset_seconds) * 1000);
+        console.log(data);
         console.log(data.current.weather_code);
 
       };
@@ -36,14 +36,20 @@ export const App = () => {
 
 
   const [iconName, setIconNameState] = useState();
+  const [desc, setDescNameState] = useState();
 
   useEffect(() => {
     if (data) {
       const iconName = setIconName(data);
-      setIconNameState(iconName);
+      setIconNameState(iconName[0]);
+      setDescNameState(iconName[1]);
     }
   }, [data]);
-  
+
+
+
+
+ 
 
 
   return data && !data.message ? (
@@ -51,7 +57,7 @@ export const App = () => {
       <MainCard
         city={city}
         country={data.timezone}
-        description={data.temperature_2m}
+        description={desc}
         iconName={iconName}
         data={data}
       />

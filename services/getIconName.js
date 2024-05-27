@@ -70,7 +70,8 @@ export const setIconName = (data) => {
       }
     
   const iconName = day === 1 ? `${iconNb}d` : `${iconNb}n`;
+  const iconNameAndDesc = [iconName, description];
 
-  return iconName;
+  return iconNameAndDesc;
 
 }
