@@ -29,6 +29,8 @@ They asked me to change the api they were using (weathermeteo) and use openmeteo
 
 There is a big JS community on internet so I could find most solutions to my problematics.
 
+Still, I integrate a real time clock, but I couldn't find a way to make it use the timezone... So, so far, apparently I can use it only in France ; if I set a different city abroad it won't change the time. (I found out that when I use the data, the setInterval won't work as it should.) I will work on this.
+
 I added a file, in Services, where I made a function to change the main image + description acording to the weather code.
 
 Also, since I trained myself, maybe I used some methods, or functions that are not the most optimized; I'm sure I will learn more soon and change it when needed.

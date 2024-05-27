@@ -6,11 +6,11 @@ export const DateAndTime = ({ data, unitSystem  }) => {
   const [currentTime, setCurrentTime] = useState(getTime());
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const intervalClock = setInterval(() => {
       setCurrentTime(getTime());
     }, 1000);
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(intervalClock);
   }, []);
 
   return (

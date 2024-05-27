@@ -18,10 +18,11 @@ export const getTime = (unitSystem) => {
   const hours = currentTime.getHours();
   const minutes = currentTime.getMinutes();
   const seconds = currentTime.getSeconds();
-  const formattedHours = hours % 12 || 12;
+  const formattedHours = hours % 12;
   const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
   const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
-  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
 };
 
 export const getAMPM = (unitSystem, currentTime, timezone) =>
