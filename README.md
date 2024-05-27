@@ -38,7 +38,7 @@ Also, since I trained myself, maybe I used some methods, or functions that are n
 ## Installation
 
 I have forked this project then cloned it; I had some struggles about the node version,
-and I had to install nvm so I can switch the node version (16 needed here).
+and I had to use nvm so I can switch the node version (16 needed here).
 
 ## What I will do next
 
