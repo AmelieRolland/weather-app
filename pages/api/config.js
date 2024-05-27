@@ -1,3 +1,3 @@
 export default{
-    city : 'San Francisco'
+    city : 'Lyon'
 };

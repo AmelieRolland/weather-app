@@ -13,6 +13,8 @@ export const getVisibility = (unitSystem, visibilityInMeters) =>
     ? (visibilityInMeters / 1000).toFixed(1)
     : kmToMiles(visibilityInMeters / 1000);
 
+    // fonction qui me permet de récupérer l'heure actuelle, pour y appliquer un set interval par la suite (voir dans DateAndTime)
+
 export const getTime = (unitSystem) => {
   const currentTime = new Date();
   const hours = currentTime.getHours();
@@ -24,6 +26,8 @@ export const getTime = (unitSystem) => {
   const ampm = hours >= 12 ? 'PM' : 'AM';
   return `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
 };
+
+   //fonction qui me permet d'y ajouter la timezone en paramètre
 
 export const getTimeWithTimezone = (utcOffsetSeconds) => {
   const now = new Date();
