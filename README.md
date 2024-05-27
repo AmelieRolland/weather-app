@@ -27,10 +27,9 @@ This is a project-test for a school I would really love to integrate. This was v
 
 They asked me to change the api they were using (weathermeteo) and use openmeteo, with some new requests. This is the first time I worked with existing code, it was very interesting.
 
-There is a big JS community on internet so I could find most solutions to my problematics, therefore, I couldn't install node-cron, maybe because of the node version. I even tried an other one, 'cron', but it wasn't successfull either.
-**UPDATE** Je pense avoir réussi à gérer le chargement toutes les heures en utilisant set interval.
+There is a big JS community on internet so I could find most solutions to my problematics.
 
-I added a file, in Services, where I made a function to change the main image acording to the weather code.
+I added a file, in Services, where I made a function to change the main image + description acording to the weather code.
 
 Also, since I trained myself, maybe I used some methods, or functions that are not the most optimized; I'm sure I will learn more soon and change it when needed.
 
@@ -38,12 +37,12 @@ Also, since I trained myself, maybe I used some methods, or functions that are n
 
 ## Installation
 
-I have forked this project then cloned it; I had some struggles about the node versioning,
+I have forked this project then cloned it; I had some struggles about the node version,
 and I had to install nvm so I can switch the node version (16 needed here).
 
 ## What I will do next
 
-I definitelly want to find a solution for node-cron; and maybe add some more features, changing decor when day or night, it could be really fun.
+I would love to add some more features, changing decor when day or night for exemple, it could be really fun.
 
 
 
