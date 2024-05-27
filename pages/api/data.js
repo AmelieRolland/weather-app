@@ -20,11 +20,4 @@ export default async function handler(req, res) {
   res.status(200).json(data, cityData);
   }
 
-  // cron.schedule('* 59 * * *', async () => {
-  //   try {
-  //     await fetchWeatherData();
-  //   } catch (error) {
-  //     console.error('Erreur lors du chargement des données', error);
-  //   }
-  // });
   
