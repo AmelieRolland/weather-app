@@ -27,7 +27,7 @@ export const App = () => {
         const res = await fetch("api/data");
         const data = await res.json();
         setWeatherData({ ...data });
-        console.log(data.daily.sunrise);
+        console.log((data.daily.sunrise+ data.utc_offset_seconds) * 1000);
         console.log(data.current.weather_code);
 
       };

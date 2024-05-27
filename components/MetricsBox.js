@@ -4,6 +4,7 @@ import {
   getAMPM,
   getVisibility,
   getWindSpeed,
+  getFixedTime
 } from "../services/helpers";
 import { MetricsCard } from "./MetricsCard";
 import styles from "./MetricsBox.module.css";
@@ -38,21 +39,23 @@ export const MetricsBox = ({ data, unitSystem }) => {
       <MetricsCard
         title={"Sunrise"}
         iconSrc={"/icons/sunrise.png"}
-        metric={getTime(
-          data.daily.sunrise,
+        metric={getFixedTime(
+          unitSystem,
+          data.daily.sunrise[0],
           data.utc_offset_seconds
         )}
+        unit={"AM"}
 
       />
       <MetricsCard
         title={"Sunset"}
         iconSrc={"/icons/sunset.png"}
-        metric={getTime(
+        metric={getFixedTime(
           unitSystem,
-          data.daily.sunset,
+          data.daily.sunset[0],
           data.utc_offset_seconds
         )}
-        unit={getAMPM(unitSystem, data.daily.sunset, data.utc_offset_seconds)}
+        unit={"PM"}
       />
     </div>
   );
