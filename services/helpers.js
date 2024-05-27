@@ -25,6 +25,13 @@ export const getTime = (unitSystem) => {
   return `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
 };
 
+export const getTimeWithTimezone = (utcOffsetSeconds) => {
+  const now = new Date();
+  const offsetMilliseconds = utcOffsetSeconds * 1000;
+  const localTimeWithOffset = new Date(now.getTime() + offsetMilliseconds);
+  return localTimeWithOffset.toLocaleTimeString();
+}
+
 export const getAMPM = (unitSystem, currentTime, timezone) =>
   unitSystem === "imperial"
     ? unixToLocalTime(currentTime, timezone).split(":")[0] >= 12

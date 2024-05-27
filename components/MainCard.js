@@ -8,7 +8,7 @@ export const MainCard = ({
   data,
 }) => {
 
-  let celsius = Math.floor(data.current.temperature_2m);
+  let celsius = Math.round(data.current.temperature_2m);
 
 
   return (
