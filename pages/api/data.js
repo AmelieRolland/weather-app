@@ -2,7 +2,6 @@ import config from './config';
 
 export default async function handler(req, res) {
 
-  const cron = require('node-cron');
 
   const { city } = config;
   const getCityData = await fetch(

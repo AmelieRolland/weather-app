@@ -22,6 +22,7 @@ export const App = () => {
   const {city} = config
   
 
+
       useEffect(() => {
         const getData = async () => {
         const res = await fetch("api/data");
@@ -31,26 +32,28 @@ export const App = () => {
         console.log(data.current.weather_code);
 
       };
+      const interval = setInterval(getData, 3600000);
+      
       getData();
+      return () => clearInterval(interval);
     }, [triggerFetch]);
 
 
+
+
+
+
+
   const [iconName, setIconNameState] = useState();
-  const [desc, setDescNameState] = useState();
+  const [desc, setDescState] = useState();
 
   useEffect(() => {
     if (data) {
       const iconName = setIconName(data);
       setIconNameState(iconName[0]);
-      setDescNameState(iconName[1]);
+      setDescState(iconName[1]);
     }
   }, [data]);
-
-
-
-
- 
-
 
   return data && !data.message ? (
     <div className={styles.wrapper}>
@@ -71,7 +74,7 @@ export const App = () => {
       </ContentBox>
     </div>
   ) : data && data.message ? (
-    <ErrorScreen errorMessage="City not found, try again!">
+    <ErrorScreen errorMessage="Erreur lors du chargement">
     </ErrorScreen>
   ) : (
     <LoadingScreen loadingMessage="Loading data..." />

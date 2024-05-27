@@ -28,6 +28,7 @@ This is a project-test for a school I would really love to integrate. This was v
 They asked me to change the api they were using (weathermeteo) and use openmeteo, with some new requests. This is the first time I worked with existing code, it was very interesting.
 
 There is a big JS community on internet so I could find most solutions to my problematics, therefore, I couldn't install node-cron, maybe because of the node version. I even tried an other one, 'cron', but it wasn't successfull either.
+**UPDATE** Je pense avoir réussi à gérer le chargement toutes les heures en utilisant set interval.
 
 I added a file, in Services, where I made a function to change the main image acording to the weather code.
 
