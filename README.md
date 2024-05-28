@@ -29,7 +29,10 @@ They asked me to change the api they were using (weathermeteo) and use openmeteo
 
 There is a big JS community on internet so I could find most solutions to my problematics.
 
-Still, I integrate a real time clock, but I couldn't find a way to make it use the timezone... So, so far, apparently I can use it only in France ; if I set a different city abroad it won't change the time. (I found out that when I use the data, the setInterval won't work as it should.) I will work on this.
+Still, I integrate a real time clock, but I couldn't find a way to make it use the timezone... So, so far, apparently I can use it only in France (metropolitain) ; if I set a different city abroad it won't change the time. (I found out that when I use the data, the setInterval won't work as it should.) I will work on this.
+
+> [!NOTE]
+> **UPDATE** I finally found a way to add the timezone with a function! 🎉
 
 I added a file, in Services, where I made a function to change the main image + description acording to the weather code.
 
@@ -45,6 +48,7 @@ and I had to use nvm so I can switch the node version (16 needed here).
 ## What I will do next
 
 I would love to add some more features, changing decor when day or night for exemple, it could be really fun.
+Plus definitely I will work on the optimization of all the functions and methods with maybe some librairies I will find!
 
 
 

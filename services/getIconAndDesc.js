@@ -1,6 +1,6 @@
 
 
-export const setIconName = (data) => {
+export const setIconAndDesc = (data) => {
 
     let weatherCode = (data.current.weather_code);
     let day = (data.current.is_day);

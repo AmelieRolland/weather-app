@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { setIconName } from "../services/getIconName";
-
-
+import { setIconAndDesc } from "../services/getIconAndDesc";
 
 import { MainCard } from "../components/MainCard";
 import { ContentBox } from "../components/ContentBox";
@@ -21,16 +19,13 @@ export const App = () => {
   const [unitSystem, setUnitSystem] = useState("metric");
   const {city} = config
   
-
+  //chargement des données api en json
 
       useEffect(() => {
         const getData = async () => {
         const res = await fetch("api/data");
         const data = await res.json();
         setWeatherData({ ...data });
-        console.log(data);
-        console.log(data.current.weather_code);
-
       };
       const interval = setInterval(getData, 3600000);
       
@@ -42,18 +37,20 @@ export const App = () => {
 
 
 
-
+  // récupération des icones et descriptions selon le weather code
 
   const [iconName, setIconNameState] = useState();
   const [desc, setDescState] = useState();
 
   useEffect(() => {
     if (data) {
-      const iconName = setIconName(data);
+      const iconName = setIconAndDesc(data);
       setIconNameState(iconName[0]);
       setDescState(iconName[1]);
     }
   }, [data]);
+
+  //affichage 
 
   return data && !data.message ? (
     <div className={styles.wrapper}>
