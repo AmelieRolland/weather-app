@@ -12,14 +12,13 @@ import { ErrorScreen } from "../components/ErrorScreen";
 import styles from "../styles/Home.module.css";
 import config from "./api/config";
 
+  //chargement des données api en json
 
 export const App = () => {
   const [triggerFetch, setTriggerFetch] = useState();
   const [data, setWeatherData] = useState();
   const [unitSystem, setUnitSystem] = useState("metric");
   const {city} = config
-  
-  //chargement des données api en json
 
       useEffect(() => {
         const getData = async () => {
